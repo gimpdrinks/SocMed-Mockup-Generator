@@ -1,0 +1,5 @@
+{
+  "name": "Social Ad Mockup Generator",
+  "description": "Generate professional social media ad mockups by combining a product image with various scenes, styles, and text overlays using the Gemini API.",
+  "requestFramePermissions": []
+}
