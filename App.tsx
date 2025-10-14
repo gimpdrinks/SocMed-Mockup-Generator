@@ -8,6 +8,14 @@ import ControlPanel from './components/ControlPanel';
 import GeneratedImage from './components/GeneratedImage';
 import AdCopyGenerator from './components/AdCopyGenerator';
 import AdCopyDisplay from './components/AdCopyDisplay';
+import Footer from './components/Footer';
+
+const getErrorMessage = (error: unknown): string => {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  return String(error);
+};
 
 const App: React.FC = () => {
   // State for Image Generation
@@ -77,7 +85,7 @@ const App: React.FC = () => {
       setGeneratedImage(generated);
     } catch (e) {
       console.error(e);
-      setImageError('Failed to generate ad mockup. Please try again.');
+      setImageError(`Failed to generate ad mockup. ${getErrorMessage(e)}`);
     } finally {
       setIsImageLoading(false);
     }
@@ -112,7 +120,7 @@ const App: React.FC = () => {
       setGeneratedCaptions(captions);
     } catch(e) {
       console.error(e);
-      setCopyError('Failed to generate ad copy. Please try again.');
+      setCopyError(`Failed to generate ad copy. ${getErrorMessage(e)}`);
     } finally {
       setIsCopyLoading(false);
     }
@@ -122,9 +130,9 @@ const App: React.FC = () => {
   const isGenerationDisabled = !productImage || (backgroundMode === 'custom' && !customBackground);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200 font-sans">
+    <div className="min-h-screen bg-gray-900 text-gray-200 font-sans flex flex-col">
       <Header />
-      <main className="container mx-auto p-4 lg:p-8">
+      <main className="container mx-auto p-4 lg:p-8 flex-grow">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column: Controls */}
           <div className="flex flex-col space-y-8">
@@ -182,6 +190,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
