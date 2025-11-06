@@ -12,6 +12,9 @@ const Header: React.FC = () => {
         <h1 className="text-2xl lg:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
           Social Media Ad Generator
         </h1>
+        <p className="text-md lg:text-lg text-gray-300 mt-1">
+          Generate platform-ready ads in seconds.
+        </p>
       </div>
     </header>
   );
